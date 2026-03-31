@@ -1,0 +1,271 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# --- THE LAYOUT ---
+format = """
+[░▒▓█](color_main)\
+$os\
+$username\
+[](bg:color_accent fg:color_main)\
+$directory\
+[](bg:color_git fg:color_accent)\
+$git_branch\
+$git_status\
+[](fg:color_git bg:color_lang)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:color_lang bg:color_sys)\
+$docker_context\
+$conda\
+[](fg:color_sys bg:color_time)\
+$time\
+[ ](fg:color_time)\
+$cmd_duration\
+$line_break$character"""
+
+palette = 'nord'
+
+# --- OS & USER ---
+[os]
+disabled = false
+style = "bg:color_main fg:crust"
+format = '[$symbol ]($style)'
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = false 
+style_user = "bg:color_main fg:crust"
+style_root = "bg:color_main fg:crust"
+format = '[$user]($style)'
+
+# --- DIRECTORY ---
+[directory]
+style = "bg:color_accent fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+# --- GIT ---
+[git_branch]
+symbol = ""
+style = "bg:color_git"
+format = '[[ $symbol $branch ](fg:crust bg:color_git)]($style)'
+
+[git_status]
+style = "bg:color_git"
+format = '[[($all_status$ahead_behind )](fg:crust bg:color_git)]($style)'
+
+# --- LANGUAGES (Generic color_lang) ---
+[nodejs]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[c]
+symbol = " "
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[php]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[java]
+symbol = " "
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version) ](fg:crust bg:color_lang)]($style)'
+
+[python]
+symbol = ""
+style = "bg:color_lang"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:color_lang)]($style)'
+
+# --- SYSTEM & TOOLS ---
+[docker_context]
+symbol = ""
+style = "bg:color_sys"
+format = '[[ $symbol( $context) ](fg:crust bg:color_sys)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:crust bg:color_sys"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:color_time"
+format = '[[  $time ](fg:crust bg:color_time)]($style)'
+
+[cmd_duration]
+disabled = false
+show_milliseconds = false
+format = " in $duration "
+style = "bg:color_time"
+min_time_to_notify = 45000
+
+# --- PROMPT CHARACTER ---
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:color_success)'
+error_symbol = '[❯](bold fg:color_error)'
+vimcmd_symbol = '[❮](bold fg:color_success)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_replace)'
+vimcmd_replace_symbol = '[❮](bold fg:color_replace)'
+vimcmd_visual_symbol = '[❮](bold fg:color_visual)'
+
+[line_break]
+disabled = false
+
+# --- DYNAMIC PALETTE (Catppuccin Macchiato Defaults) ---
+[palettes.catppuccin_macchiato]
+color_main   = "#ed8796" # Red
+color_accent = "#f5a97f" # Peach
+color_success= "#a6da95" # Green
+color_error  = "#ed8796" # Red
+color_replace= "#b7bdf8" # Lavender
+color_visual = "#eed49f" # Yellow
+color_git    = "#eed49f" # Yellow
+color_lang   = "#a6da95" # Green
+color_sys    = "#7dc4e4" # Sapphire
+color_time   = "#b7bdf8" # Lavender
+crust        = "#181926" # Dark background for text
+
+[palettes.tokyo_night]
+color_main    = "#a3aed2" # Light Blue Grey
+color_accent  = "#769ff0" # Soft Blue
+color_success = "#9ece6a" # Tokyo Green
+color_error   = "#f7768e" # Tokyo Red
+color_replace = "#bb9af7" # Tokyo Purple
+color_visual  = "#e0af68" # Tokyo Yellow
+color_git     = "#394260" # Darker Blue
+color_lang    = "#212736" # Very Dark Blue
+color_sys     = "#1d2230" # The Deep Blue
+color_time    = "#1d2230" # Matching Sys
+crust         = "#090c0c" # Pure black-ish
+
+# --- GRUVBOX (The Earthy Retro Classic) ---
+[palettes.gruvbox_dark]
+color_main    = "#fb4934" # Red
+color_accent  = "#fabd2f" # Yellow
+color_success = "#b8bb26" # Green
+color_error   = "#fb4934" # Red
+color_replace = "#d3869b" # Purple
+color_visual  = "#fe8019" # Orange
+color_git     = "#fe8019" # Orange
+color_lang    = "#8ec07c" # Aqua/Green
+color_sys     = "#83a598" # Blue
+color_time    = "#d3869b" # Purple
+crust         = "#282828" # Background
+
+# --- DRACULA (The Neon High-Contrast Favorite) ---
+[palettes.dracula]
+color_main    = "#ff79c6" # Pink
+color_accent  = "#bd93f9" # Purple
+color_success = "#50fa7b" # Green
+color_error   = "#ff5555" # Red
+color_replace = "#ffb86c" # Orange
+color_visual  = "#f1fa8c" # Yellow
+color_git     = "#f1fa8c" # Yellow
+color_lang    = "#8be9fd" # Cyan
+color_sys     = "#6272a4" # Comment/Muted Blue
+color_time    = "#bd93f9" # Purple
+crust         = "#282a36" # Background
+
+# --- NORD (The Clean Arctic Aesthetic) ---
+[palettes.nord]
+color_main    = "#bf616a" # Red
+color_accent  = "#d08770" # Orange
+color_success = "#a3be8c" # Green
+color_error   = "#bf616a" # Red
+color_replace = "#b48ead" # Purple
+color_visual  = "#ebcb8b" # Yellow
+color_git     = "#ebcb8b" # Yellow
+color_lang    = "#88c0d0" # Frost Blue
+color_sys     = "#81a1c1" # Steel Blue
+color_time    = "#5e81ac" # Deep Blue
+crust         = "#2e3440" # Background
+
+# --- DARCULA (The IntelliJ Classic - Muted & Warm) ---
+[palettes.darcula]
+color_main    = "#cc7832" # Orange
+color_accent  = "#ffc66d" # Yellow
+color_success = "#629755" # Green
+color_error   = "#bc3f3c" # Red
+color_replace = "#a9b7c6" # Text Grey
+color_visual  = "#bbb529" # Olive
+color_git     = "#bbb529" # Olive
+color_lang    = "#6897bb" # Blue
+color_sys     = "#9876aa" # Purple
+color_time    = "#9876aa" # Purple
+crust         = "#2b2b2b" # Background
+
+# --- ROSE PINE (The Trendy "Soho Vibes" Soft Theme) ---
+[palettes.rose_pine]
+color_main    = "#eb6f92" # Love (Pink)
+color_accent  = "#f6c177" # Gold
+color_success = "#31748f" # Pine
+color_error   = "#eb6f92" # Love
+color_replace = "#c4a7e7" # Iris
+color_visual  = "#ebbcba" # Rose
+color_git     = "#ebbcba" # Rose
+color_lang    = "#9ccfd8" # Foam
+color_sys     = "#26233a" # Overlay
+color_time    = "#c4a7e7" # Iris
+crust         = "#191724" # Background
