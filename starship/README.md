@@ -68,3 +68,8 @@ Add to your ~/.zshrc:
 eval "$(starship init zsh)"
 ```
 Note: After adding the line, restart your terminal or source the config file (e.g., `source ~/.bashrc`) to see the changes.
+
+### **Config file creation**
+```
+mkdir -p ~/.config && touch ~/.config/starship.toml
+```
