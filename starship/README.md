@@ -1,5 +1,9 @@
 # 🚀 Scleo's Semantic Starship Configuration
 
+```
+sudo nvim ~/.config/starship.toml
+```
+
 A highly customized, "Pixel-Grid" style prompt for `starship`. This configuration uses a **Semantic Color System**, meaning colors are assigned by **function** (e.g., `color_main`, `color_lang`) rather than hardcoded hex values.
 
 ## 📸 Visual Style
@@ -32,3 +36,35 @@ To switch themes, change the `palette` variable at the top of `starship.toml`:
 
 ```toml
 palette = 'tokyo_night' # Options: catppuccin_macchiato, tokyo_night, dracula, gruvbox_dark, nord, rose_pine
+```
+
+---
+
+## 📥 Installation
+
+| Platform | Command |
+| :--- | :--- |
+| **Windows** | `winget install --id Starship.Starship` |
+| **Linux** | `curl -sS https://starship.rs/install.sh \| sh` |
+| **macOS** | `brew install starship` |
+
+## 🛠️ Shell Initialization
+
+To activate Starship, add the following initialization line to your specific shell configuration file:
+
+#### **PowerShell**
+Add to your `$PROFILE`:
+```powershell
+Invoke-Expression (&starship init powershell)
+```
+#### **Bash**
+Add to your ~/.bashrc:
+```Bash
+eval "$(starship init bash)"
+```
+#### **Zsh**
+Add to your ~/.zshrc:
+```Bash
+eval "$(starship init zsh)"
+```
+Note: After adding the line, restart your terminal or source the config file (e.g., `source ~/.bashrc`) to see the changes.
