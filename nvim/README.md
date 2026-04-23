@@ -8,15 +8,24 @@ A high-performance, **single-file** Neovim setup designed for seamless portabili
 - **OS-Aware Aesthetics**: Automatically switches themes based on your host operating system.
 - **Hybrid Line Numbers**: Optimized for fast vertical movement using relative jumps.
 - **Right-Side Navigation**: Persistent file explorer on the right to keep your code centered.
+- **Native Remote Clipboard**: Uses OSC 52 to sync clipboard over SSH without extra dependencies.
 
 ---
 
-## 📂 Installation
+## 📂 Installation & Requirements
 
-1. **Copy** your `init.lua` to the configuration folder:
+> [!IMPORTANT]  
+> **Neovim v0.10.0 or higher is strictly required** for this configuration to function correctly (specifically for native OSC 52 and modern plugin compatibility).
+
+1. **Check Official Install Methods**: Visit the [Official Neovim Installation Guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for your specific platform.
+2. **Version Note**: If your default package manager (like `apt`) installs an older version, it is highly recommended to use **Snap** for a guaranteed up-to-date stable release:
+   ```bash
+   sudo snap install nvim --classic
+   ```
+3. **Setup Config**: Copy your `init.lua` to:
    - **Windows**: `%LOCALAPPDATA%\nvim\init.lua`
    - **Linux/macOS**: `~/.config/nvim/init.lua`
-2. **Launch Neovim**. It will automatically download all required plugins.
+4. **Launch**: Open Neovim, and it will auto-install all plugins.
 
 *Note: A [Nerd Font](https://www.nerdfonts.com/) (e.g., JetBrainsMono Nerd Font) is required for file icons.*
 
@@ -41,10 +50,11 @@ The **Leader Key** is set to `Space`.
 | `d` | **Delete**: Remove text *without* overwriting your clipboard. |
 | `x` | **Delete Char**: Remove character *without* overwriting your clipboard. |
 | `y` | **Yank**: Copy text to system clipboard (as usual). |
+
 ---
 
 ## 🪟 Window & Pane Navigation
-Instead of cycling through all panes, move directly in a specific direction using `CTRL-w` + `hjkl` (Vim keys) or the arrow keys. This is especially useful for jumping between the code and the **Nvim-Tree**.
+Move directly in a specific direction using `CTRL-w` + `hjkl` (Vim keys) or the arrow keys. 
 
 | Direction | Shortcut | Alternative |
 | :--- | :--- | :--- |
@@ -56,7 +66,7 @@ Instead of cycling through all panes, move directly in a specific direction usin
 ---
 
 ## 🌲 File Explorer (nvim-tree)
-The explorer is located on the **right** and features relative line numbers for quick navigation within the tree.
+The explorer is located on the **right** and features relative line numbers.
 
 ### Explorer Internal Commands
 | Key | Action |
@@ -69,3 +79,14 @@ The explorer is located on the **right** and features relative line numbers for 
 | `f` | **Filter**: Search for files in the current view. |
 | `q` | Close the tree. |
 
+---
+
+## 💡 Useful Notes & Tips
+
+- **Plugin Health**: If something feels off, run `:checkhealth` to see if Neovim detects any issues with your environment or clipboard.
+- **Managing Plugins**: Use `:Lazy` to open the plugin dashboard. You can press `U` to update everything or `X` to clean up unused plugins.
+- **SSH Clipboard**: This config uses OSC 52. If copying to your local machine doesn't work, ensure your terminal emulator (WezTerm, Windows Terminal, etc.) has "Allow Clipboard Access" enabled.
+- **SRE Tip**: Since this is a single-file config, you can quickly deploy it on a new server using:
+  `curl -fLo ~/.config/nvim/init.lua --create-dirs https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/init.lua`
+- **Exiting**: Remember that `:q` closes the current window. If you want to close everything and exit, use `:qa`.
+```
