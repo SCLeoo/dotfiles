@@ -8,21 +8,15 @@
 Add the following to your `~/.bashrc` :
 
 ```bash
-# --- Bash History Settings (SRE Optimized) ---
-# Don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-# Append to the history file, don't overwrite it
-shopt -s histappend
-# Huge history size for better predictions/search
-HISTSIZE=10000
-HISTFILESIZE=20000
-
 # --- History Search (Like PSReadLine Up/Down) ---
 # This allows you to type 'docker' and hit Up to see only docker commands
 if [[ $- == *i* ]]; then
     bind '"\e[A": history-search-backward'
     bind '"\e[B": history-search-forward'
 fi
+
+# --- Pretty ls (you need to install if not present) ---
+alias ls='eza --icons=always'
 
 # --- Welcome Message ---
 # Using ANSI color codes (36 is Cyan)
