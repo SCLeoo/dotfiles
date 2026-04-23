@@ -31,7 +31,12 @@ opt.splitbelow = true    -- Horizontal splits open below
 
 -- 6. Clipboard (System synchronization)
 -- This allows copy-pasting between Neovim and Windows/Mac/Linux apps.
-opt.clipboard:append("unnamedplus")
+opt.clipboard = "unnamedplus"
+vim.g.clipboard = {
+  name = 'osc52',
+  copy = { ['+'] = require('vim.ui.clipboard.osc52').copy('+') },
+  paste = { ['+'] = require('vim.ui.clipboard.osc52').paste('+') },
+}
 
 -- 7. "Black Hole" Deletion
 -- These mappings ensure that deleting text doesn't overwrite your clipboard.
@@ -47,14 +52,15 @@ vim.keymap.set({"n", "v"}, "x", '"_x', { desc = "Delete character without yankin
 -- ========================================================================== --
 
 -- 1. Detect Operating System
--- Uses 'vim.uv' (modern Neovim API) to identify the host system for logic/themes.
-local sysname = vim.uv.os_uname().sysname
+-- Use vim.uv if available (v0.10+), otherwise fallback to vim.loop (older versions)
+local uv = vim.uv or vim.loop
+local sysname = uv.os_uname().sysname
 
 -- 2. The Bootstrapper (Auto-installer)
 -- This block checks if 'lazy.nvim' is installed. If not, it clones it from GitHub.
 -- This makes your configuration 100% portable to any new machine.
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -71,13 +77,13 @@ vim.opt.rtp:prepend(lazypath)
 --                               PLUGINS SETUP                                --
 -- ========================================================================== --
 
--- 3. Plugin Configuration
+-- 1. Plugin Configuration
 -- This is where the "superpowers" of Neovim are defined.
 require("lazy").setup({
-  -- Icons (Required for a professional look in nvim-tree)
+  -- a. Icons (Required for a professional look in nvim-tree)
   { "nvim-tree/nvim-web-devicons" },
 
-  -- Nvim-Tree: The File Explorer
+  -- b. Nvim-Tree: The File Explorer
   { 
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -96,6 +102,11 @@ require("lazy").setup({
       })
     end
   },
+    
+  -- c. Themes
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 },
+  { "Mofiqul/dracula.nvim", priority = 1000 },
 
 -- [TRINITY SECTION] 
 -- 
@@ -138,18 +149,13 @@ require("lazy").setup({
 --   --     })
 --   --   end
 --   -- },
-
-  -- Themes
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-  { "ellisonleao/gruvbox.nvim", priority = 1000 },
-  { "Mofiqul/dracula.nvim", priority = 1000 },
 })
 
 -- ========================================================================== --
 --                               UI & THEMES                                  --
 -- ========================================================================== --
 
--- 4. OS-Based Color Logic
+-- 1. OS-Based Color Logic
 -- Automatically apply a different theme depending on the environment.
 if sysname == "Linux" then
   vim.cmd("colorscheme gruvbox")
@@ -168,7 +174,7 @@ end
 -- Focus File Explorer
 -- Jump directly to the tree using Space + e.
 vim.keymap.set("n", "<leader>e", function()
-  require("nvim-tree.api").tree.open({ focus = true })
+  require("nvim-tree.api").tree.toggle({ focus = true })
 end, { desc = "Focus File Explorer" })
 
 -- Auto-open on Startup
