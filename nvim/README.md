@@ -18,16 +18,23 @@ A high-performance, **single-file** Neovim setup designed for seamless portabili
 > **Neovim v0.10.0 or higher is strictly required** for this configuration to function correctly (specifically for native OSC 52 and modern plugin compatibility).
 
 1. **Check Official Install Methods**: Visit the [Official Neovim Installation Guide](https://github.com/neovim/neovim/wiki/Installing-Neovim) for your specific platform.
-2. **Version Note**: If your default package manager (like `apt`) installs an older version, it is highly recommended to use **Snap** for a guaranteed up-to-date stable release:
+2. **Version Note**: If your default package manager (like `apt`) installs an older version, it is highly recommended to use the AppImage to ensure the latest release is installed
    ```bash
-   sudo snap install nvim --classic
+   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
+   chmod u+x nvim-linux-x86_64.appimage
+   mkdir -p /opt/nvim
+   mv nvim-linux-x86_64.appimage /opt/nvim/nvim
    ```
-3. **Setup Config**: Copy your `init.lua` to:
+   Then add the following into your shell configuration (`~/.bashrc` or `~/.zshrc`):
+   ```
+   export PATH="$PATH:/opt/nvim/"
+   ```
+4. **Setup Config**: Copy your `init.lua` to:
    - **Windows**: `%LOCALAPPDATA%\nvim\init.lua`
    - **Linux/macOS**: `~/.config/nvim/init.lua`
-4. **Launch**: Open Neovim, and it will auto-install all plugins.
+5. **Launch**: Open Neovim, and it will auto-install all plugins.
 
-*Note: A [Nerd Font](https://www.nerdfonts.com/) (e.g., JetBrainsMono Nerd Font) is required for file icons.*
+*Note: A [Nerd Font](https://www.nerdfonts.com/) (e.g., FiraMono Nerd Font) is required for file icons.*
 
 ---
 
