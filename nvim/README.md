@@ -96,4 +96,3 @@ The explorer is located on the **right** and features relative line numbers.
 - **SRE Tip**: Since this is a single-file config, you can quickly deploy it on a new server using:
   `curl -fLo ~/.config/nvim/init.lua --create-dirs https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/init.lua`
 - **Exiting**: Remember that `:q` closes the current window. If you want to close everything and exit, use `:qa`.
-```
