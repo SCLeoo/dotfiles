@@ -1,9 +1,9 @@
 # 🚀 Scleo's Semantic Starship Configuration
 
+Quickly deploy this config on a new server using:
 ```
-sudo nvim ~/.config/starship.toml
+  curl --ssl-no-revoke -fLo ~/.config/starship.toml --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/starship/starship.toml
 ```
-
 A highly customized, "Pixel-Grid" style prompt for `starship`. This configuration uses a **Semantic Color System**, meaning colors are assigned by **function** (e.g., `color_main`, `color_lang`) rather than hardcoded hex values.
 
 ## 📸 Visual Style
