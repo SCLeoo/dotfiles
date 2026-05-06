@@ -36,6 +36,11 @@ A high-performance, **single-file** Neovim setup designed for seamless portabili
 
 > If you're still learning to use Neovim you can download this [cheatsheet](https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/nvim_cheatsheet.png) to use as background 😉
 
+4. **For Linux users only**: To modify the editor that is used when you `sudoedit` you can:
+```
+echo "export SUDO_EDITOR=$(which nvim)" >> ~/.bashrc
+```
+
 ## 🚀 Key Features
 
 *   **Zero-Touch Setup**: Automatically bootstraps the `lazy.nvim` plugin manager on first launch.
