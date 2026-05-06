@@ -21,9 +21,9 @@ A high-performance, **single-file** Neovim setup designed for seamless portabili
 > **Version Note**: Run `nvim --version` to check the version that was installed. If the method you followed doesn't install the latest version of neovim available you should visit the [Official Neovim Installation Guide](https://neovim.io/doc/install/) to use a different method like AppImage for Linux users.
 
 2.  **Setup Config**: Run the following commands to automatically download the `init.lua`:
-    *   **Windows**:
+    *   **Windows** (Use Powershell and not cmd):
     ```
-    curl --ssl-no-revoke -fLo "%LOCALAPPDATA%\nvim\init.lua" --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/init.lua
+    curl --ssl-no-revoke -fLo "$env:LOCALAPPDATA\nvim\init.lua" --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/init.lua
     ```
     *   **Linux/MacOS**:
     ```
