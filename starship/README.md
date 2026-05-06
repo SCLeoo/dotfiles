@@ -1,10 +1,49 @@
-# 🚀 Scleo's Semantic Starship Configuration
+## 📥 Installation
 
-Quickly deploy this config on a new server using:
+| Platform | Command |
+| :--- | :--- |
+| **Windows** | `winget install --id Starship.Starship` |
+| **Linux** | `curl -sS https://starship.rs/install.sh \| sh` |
+| **macOS** | `brew install starship` |
+
+## 🛠️ Shell Initialization
+
+To activate Starship, add the following initialization line to your specific shell configuration file:
+
+#### **PowerShell**
+Add to your `$PROFILE` `Invoke-Expression (&starship init powershell)` or run:
+```powershell
+Add-Content -Path $PROFILE -Value 'Invoke-Expression (&starship init powershell)'
+```
+#### **Bash/Zsh**
+Add to your `~/.bashrc` or `~/.zshrc` `eval "$(starship init bash)"` or run:
+```Bash
+echo 'eval "$(starship init bash)"' >> ~/.bashrc
+```
+```Bash
+echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+```
+Note: After adding the line, restart your terminal or source the config file (e.g., `source ~/.bashrc`) to see the changes.
+
+### **Config file creation**
+After installing you can deploy this config on a new server using:
 ```
   curl --ssl-no-revoke -fLo ~/.config/starship.toml --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/starship/starship.toml
 ```
+---
+# 🚀 Scleo's Semantic Starship Configuration
+
 A highly customized, "Pixel-Grid" style prompt for `starship`. This configuration uses a **Semantic Color System**, meaning colors are assigned by **function** (e.g., `color_main`, `color_lang`) rather than hardcoded hex values.
+
+## 🎭 Available Themes
+
+To switch themes, change the `palette` variable at the top of `starship.toml`:
+
+```toml
+palette = 'tokyo_night' # Options: catppuccin_macchiato, tokyo_night, dracula, gruvbox_dark, nord, rose_pine
+```
+
+---
 
 ## 📸 Visual Style
 
@@ -27,49 +66,3 @@ Instead of editing dozens of lines to change a theme, this config uses generic i
 | `color_sys` | Docker and Conda environments. |
 | `color_time` | Clock and Command duration. |
 | `crust` | The background/text contrast color. |
-
----
-
-## 🎭 Available Themes
-
-To switch themes, change the `palette` variable at the top of `starship.toml`:
-
-```toml
-palette = 'tokyo_night' # Options: catppuccin_macchiato, tokyo_night, dracula, gruvbox_dark, nord, rose_pine
-```
-
----
-
-## 📥 Installation
-
-| Platform | Command |
-| :--- | :--- |
-| **Windows** | `winget install --id Starship.Starship` |
-| **Linux** | `curl -sS https://starship.rs/install.sh \| sh` |
-| **macOS** | `brew install starship` |
-
-## 🛠️ Shell Initialization
-
-To activate Starship, add the following initialization line to your specific shell configuration file:
-
-#### **PowerShell**
-Add to your `$PROFILE`:
-```powershell
-Invoke-Expression (&starship init powershell)
-```
-#### **Bash**
-Add to your ~/.bashrc:
-```Bash
-eval "$(starship init bash)"
-```
-#### **Zsh**
-Add to your ~/.zshrc:
-```Bash
-eval "$(starship init zsh)"
-```
-Note: After adding the line, restart your terminal or source the config file (e.g., `source ~/.bashrc`) to see the changes.
-
-### **Config file creation**
-```
-mkdir -p ~/.config && touch ~/.config/starship.toml
-```
