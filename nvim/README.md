@@ -2,12 +2,42 @@
 
 A high-performance, **single-file** Neovim setup designed for seamless portability across Windows, Linux, and macOS. This configuration balances a minimalist "vanilla-plus" feel with essential IDE power-ups.
 
+## 📂 Installation & Requirements
+
+> **Neovim v0.10.0 or higher is strictly required** for this configuration to function correctly (specifically for native OSC 52 and modern plugin compatibility).
+
+1.  **Check Official Install Methods**:
+
+| Platform | Command |
+| :-- | :-- |
+| Windows | `winget install Neovim.Neovim` |
+| Linux/MacOS | `brew install neovim` |
+
+> If it is not installed you can get [brew](https://brew.sh/) via:
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+> **Version Note**: Run `nvim --version` to check the version that was installed. If the method you followed doesn't install the latest version of neovim available you should visit the [Official Neovim Installation Guide](https://neovim.io/doc/install/) to use a different method like AppImage for Linux users.
+
+2.  **Setup Config**: Run the following commands to automatically download the `init.lua`:
+    *   **Windows**:
+    ```
+    curl --ssl-no-revoke -fLo "%LOCALAPPDATA%\nvim\init.lua" --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/init.lua
+    ```
+    *   **Linux/MacOS**:
+    ```
+    curl -fLo ~/.config/nvim/init.lua --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/init.lua
+    ```
+    
+3.  **Launch**: Open Neovim, and it will auto-install all plugins.
+
+*Note: A <https://www.nerdfonts.com/> (e.g., FiraMono Nerd Font) is required for file icons.*
+
+> If you're still learning to use Neovim you can download this [cheatsheet](https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/nvim_cheatsheet.png) to use as background 😉
+
 ## 🚀 Key Features
 
-*   **Single-File Deployment**: Quickly deploy this config on a new server using:
-       ```
-       curl -fLo ~/.config/nvim/init.lua --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/nvim/init.lua
-       ```
 *   **Zero-Touch Setup**: Automatically bootstraps the `lazy.nvim` plugin manager on first launch.
 *   **Smart Deletion**: `d` and `x` use the "Black Hole" register to prevent overwriting your clipboard.
 *   **OS-Aware Aesthetics**: Automatically switches themes based on your host operating system.
@@ -39,42 +69,7 @@ A high-performance, **single-file** Neovim setup designed for seamless portabili
 *   **Single-File Simplicity**:
     *   All settings, plugins, and mappings are contained in one `init.lua` file for easy sharing and deployment.
 
-***
-
-## 📂 Installation & Requirements
-
-> **Neovim v0.10.0 or higher is strictly required** for this configuration to function correctly (specifically for native OSC 52 and modern plugin compatibility).
-
-1.  **Check Official Install Methods**: Visit the <https://github.com/neovim/neovim/wiki/Installing-Neovim> for your specific platform.
-2.  **Version Note**: If your default package manager (like `apt`) installs an older version, it is highly recommended to use the AppImage to ensure the latest release is installed
-       ```
-       curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage
-       chmod u+x nvim-linux-x86_64.appimage
-       mkdir -p /opt/nvim
-       mv nvim-linux-x86_64.appimage /opt/nvim/nvim
-       ```
-    Then add the following into your shell configuration (`~/.bashrc` or `~/.zshrc`):
-        `export PATH="$PATH:/opt/nvim/"`
-4.  **Setup Config**: Copy your `init.lua` to:
-    *   **Windows**: `%LOCALAPPDATA%\nvim\init.lua`
-    *   **Linux/macOS**: `~/.config/nvim/init.lua`
-5.  **Launch**: Open Neovim, and it will auto-install all plugins.
-
-*Note: A <https://www.nerdfonts.com/> (e.g., FiraMono Nerd Font) is required for file icons.*
-
-***
-
-## 🎨 Operating System Themes
-
-The environment detects your platform to apply the best-suited aesthetic:
-
-| Platform        | Theme      | Style                           |
-| :-------------- | :--------- | :------------------------------ |
-| **Windows**     | Dracula    | Professional High-Contrast      |
-| **Linux**       | Gruvbox    | Retro-Material Warmth           |
-| **macOS/Other** | Catppuccin | Modern Pastel (w/ Transparency) |
-
-***
+---
 
 ## ⌨️ Global Keybindings
 
@@ -93,7 +88,7 @@ The **Leader Key** is set to `Space`.
 | `y`            | Yank (copy) as usual.                                          |
 | `Ctrl+j`       | Trigger autocompletion menu in insert mode.                    |
 
-***
+---
 
 ## 🪟 Window & Pane Navigation
 
@@ -106,7 +101,7 @@ Move directly in a specific direction using `CTRL-w` + `hjkl` (Vim keys) or the 
 | Up        | `Ctrl + w`, `k` | `Ctrl + w`, `↑` |
 | Right     | `Ctrl + w`, `l` | `Ctrl + w`, `→` |
 
-***
+---
 
 ## 🌲 File Explorer (nvim-tree)
 
@@ -124,7 +119,19 @@ The explorer is located on the **right** and features relative line numbers.
 | f     | Filter: Search for files in the current view.           |
 | q     | Close the tree.                                         |
 
-***
+---
+
+## 🎨 Operating System Themes
+
+The environment detects your platform to apply the best-suited aesthetic:
+
+| Platform        | Theme      | Style                           |
+| :-------------- | :--------- | :------------------------------ |
+| **Windows**     | Dracula    | Professional High-Contrast      |
+| **Linux**       | Gruvbox    | Retro-Material Warmth           |
+| **macOS/Other** | Catppuccin | Modern Pastel (w/ Transparency) |
+
+---
 
 ## 💡 Useful Notes & Tips
 
