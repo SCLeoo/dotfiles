@@ -6,7 +6,15 @@
 | **Linux** | `curl -sS https://starship.rs/install.sh \| sh` |
 | **macOS** | `brew install starship` |
 
+## **Config file creation**
+After installing you can deploy this config on a new server using:
+```
+  curl --ssl-no-revoke -fLo ~/.config/starship.toml --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/starship/starship.toml
+```
+
 ## 🛠️ Shell Initialization
+
+> You can skip this step if you already have the config files for your shell that are in this same repository, the initialization is already there.
 
 To activate Starship, add the following initialization line to your specific shell configuration file:
 
@@ -25,11 +33,6 @@ echo 'eval "$(starship init zsh)"' >> ~/.zshrc
 ```
 Note: After adding the line, restart your terminal or source the config file (e.g., `source ~/.bashrc`) to see the changes.
 
-### **Config file creation**
-After installing you can deploy this config on a new server using:
-```
-  curl --ssl-no-revoke -fLo ~/.config/starship.toml --create-dirs https://raw.githubusercontent.com/SCLeoo/dotfiles/refs/heads/master/starship/starship.toml
-```
 ---
 # 🚀 Scleo's Semantic Starship Configuration
 
